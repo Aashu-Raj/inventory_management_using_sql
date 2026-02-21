@@ -1,23 +1,32 @@
-
 -- STEP 1: Load raw data into the Bronze Layer table from CSV
 
--- NOTE:
--- Ensure the CSV file path is correct and accessible from MySQL server.
--- You may need to set: SET GLOBAL local_infile = 1;
--- Also check 'secure_file_priv' system variable in MySQL configuration.
+-- ============================================================
+-- IMPORTANT: MySQL Configuration Required Before Running
+-- ============================================================
+-- 1. Enable local_infile:
+--    SET GLOBAL local_infile = 1;
+--
+-- 2. Check secure_file_priv variable:
+--    SHOW VARIABLES LIKE 'secure_file_priv';
+--    - If empty: You can load from any path
+--    - If set to a directory: Place your CSV file there
+--    - If NULL: File loading is disabled (edit my.cnf/my.ini)
+--
+-- 3. Update the file path below with your actual CSV location:
+--    Windows example: 'C:/data/inventory_forecasting_clean.csv'
+--    Linux/Mac example: '/home/user/data/inventory_forecasting_clean.csv'
+-- ============================================================
 
--- Replace the file path below with your actual CSV file path
-
-LOAD DATA INFILE 'inventory_forecasting_clean.csv'
+LOAD DATA INFILE '/path/to/your/inventory_forecasting_clean.csv'
 INTO TABLE inventory_bronze_layer.raw_inventory_data
 FIELDS TERMINATED BY ','                      -- CSV column separator
 ENCLOSED BY '"'                               -- Handle quoted strings
 LINES TERMINATED BY '\n'                      -- Line ending style
 IGNORE 1 LINES                                -- Skip the header row
-(Date, Store_ID, Product_ID, Category, Region,
- Inventory_Level, Units_Sold, Units_Ordered,
- Demand_Forecast, Price, Discount, Weather_Condition,
- Holiday_Promotion, Competitor_Pricing, Seasonality);
+(Date, Store ID, Product ID, Category, Region,
+ Inventory Level, Units Sold, Units Ordered,
+ Demand Forecast, Price, Discount, Weather Condition,
+ Holiday Promotion, Competitor Pricing, Seasonality);
 
 
 -- STEP 2: Define a stored procedure to load data from the Bronze Layer

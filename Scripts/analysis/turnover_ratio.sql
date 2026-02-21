@@ -2,6 +2,8 @@
 -- INVENTORY TURNOVER RATIO ANALYSIS
 -- ------------------------------------------------------------
 
+USE inventory_silver_layer;
+
 -- Step 1: Total units sold per product-store-region per month
 WITH MonthlySales AS (
     SELECT

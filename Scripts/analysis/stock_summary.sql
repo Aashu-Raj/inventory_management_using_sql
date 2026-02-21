@@ -2,6 +2,8 @@
 -- STOCK CALCULATIONS
 -- ------------------------------------------------------------
 
+USE inventory_silver_layer;
+
 -- Query 1: Total Stock by Product Across All Stores
 SELECT
     i.product_id,

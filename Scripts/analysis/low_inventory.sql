@@ -4,6 +4,8 @@
 -- Reorder Point = 7-day supply based on last 30 days average daily sales
 -- ------------------------------------------------------------
 
+USE inventory_silver_layer;
+
 -- STEP 1: Calculate latest inventory per product-store-region
 WITH LatestInventory AS (
     SELECT

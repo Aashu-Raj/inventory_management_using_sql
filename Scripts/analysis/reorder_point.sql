@@ -5,6 +5,8 @@
 -- Lead Time is assumed to be 7 days
 -- Safety Stock buffer of +10 units shown as optional
 
+USE inventory_silver_layer;
+
 -- Step 1: Determine the latest 30-day window based on Sales data
 WITH DateRange AS (
     SELECT

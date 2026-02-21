@@ -3,6 +3,8 @@
 -- Includes stockout rate, average inventory, and inventory age
 -- ------------------------------------------------------------
 
+USE inventory_silver_layer;
+
 -- CTE 1: Count total days and stockout days per product-store-region
 WITH InventoryStatus AS (
     SELECT
