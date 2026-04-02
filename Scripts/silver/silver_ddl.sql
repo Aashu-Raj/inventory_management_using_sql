@@ -2,9 +2,7 @@
 CREATE DATABASE IF NOT EXISTS inventory_silver_layer;
 USE inventory_silver_layer;
 
--- ------------------------------------------------------------
 -- DROP existing tables if they exist (in correct dependency order)
--- ------------------------------------------------------------
 DROP TABLE IF EXISTS Forecasts;
 DROP TABLE IF EXISTS Weather;
 DROP TABLE IF EXISTS Orders;
@@ -13,10 +11,7 @@ DROP TABLE IF EXISTS Inventory;
 DROP TABLE IF EXISTS Products;
 DROP TABLE IF EXISTS Stores;
 
--- ------------------------------------------------------------
 -- CREATE new normalized Silver Layer tables
--- ------------------------------------------------------------
-
 -- Stores table (composite key)
 CREATE TABLE Stores (
     store_id VARCHAR(10),
@@ -76,7 +71,7 @@ CREATE TABLE Weather (
     store_id VARCHAR(10),
     region VARCHAR(100),
     date DATE,
-    condition VARCHAR(50),
+    weather_condition VARCHAR(50),
     PRIMARY KEY (store_id, region, date),
     FOREIGN KEY (store_id, region) REFERENCES Stores(store_id, region)
 );

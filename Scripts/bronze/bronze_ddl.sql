@@ -1,8 +1,8 @@
-# Create Database(inventory_bronze_layer)
+-- Create Database(inventory_bronze_layer)
 CREATE DATABASE IF NOT EXISTS inventory_bronze_layer;
 USE inventory_bronze_layer;
 
-# Create Raw Data Table(raw_inventory_data) (Same Structure as CSV)
+-- Create Raw Data Table(raw_inventory_data) (Same Structure as CSV)
 DROP TABLE IF EXISTS raw_inventory_data;
 CREATE TABLE raw_inventory_data (
   `Date` DATE,
@@ -22,11 +22,11 @@ CREATE TABLE raw_inventory_data (
   `Seasonality` VARCHAR(50)
 );
 
-# Create Database(inventory_analytics_urbanco)
-CREATE DATABASE IF NOT EXISTS inventory_analytics_urbanco;
-USE inventory_analytics_urbanco;
+-- Create Database(inventory_analytics)
+CREATE DATABASE IF NOT EXISTS inventory_analytics;
+USE inventory_analytics;
 
-#Create table(inventory_transactions)
+-- Create table(inventory_transactions)
 DROP TABLE IF EXISTS inventory_transactions;
 
 CREATE TABLE inventory_transactions (
@@ -45,4 +45,3 @@ CREATE TABLE inventory_transactions (
     `Competitor Pricing` DECIMAL(10,2),
     `Seasonality` VARCHAR(50)
 );
-
